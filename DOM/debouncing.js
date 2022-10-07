@@ -20,3 +20,5 @@ const doSomeMagic=function(fn,delay){
     },delay)
   }
 }
+
+let betterFunction=doSomeMagic(getData,3000)
