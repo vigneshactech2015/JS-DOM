@@ -4,7 +4,7 @@ console.log(x*y)
 }
 
 let multiplyByTwo=multiply.bind(this,2);
-multiply(3)//here 3 points to y
+multiplyByTwo(3)//here 3 points to y
 
 //using closures
 
