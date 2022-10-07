@@ -12,11 +12,9 @@ const getData=()=>{
 const doSomeMagic=function(fn,delay){
  let timer;
   return function(){
-  let context=this,
-      args=arguments;
     clearTimeout(timer);
     timer=setTimeout(()=>{
-    fn.apply(context,args)
+    fn.apply(this,arguments)
     },delay)
   }
 }
