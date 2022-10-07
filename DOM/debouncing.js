@@ -1,3 +1,6 @@
+//debouncing is useful while performing search operation
+//we can avoid unneccessary api call using this technique.
+
 //HTML
 <input type="text" onkeyup="betterFunction()">
   
