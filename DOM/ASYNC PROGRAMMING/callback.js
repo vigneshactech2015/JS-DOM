@@ -12,6 +12,18 @@ api.createOrder(cart,function (){
     })
 }
 
+ //SAME CODE WITH PROMISE
+                
+ createOrder(cart).then(function(orderId){
+return proceedToPayment(orderId)
+})
+.then(function(paymentInfo){
+    return showOrderSummary(paymentInfo)
+})
+.then(function(paymentInfo){
+    return updateWallet(paymentInfo)
+})
+                
 //Problem with Callback is
  1.Callback hell(there will be deeply nested function aka pyramid of dom)
  2.Inversion of control(one function is completely dependent on another function)            
