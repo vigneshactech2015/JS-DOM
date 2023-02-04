@@ -1,10 +1,13 @@
 //setTimeout -->  example of async operation
 
-setTimeout(()=>{
-console.log("hello vicky");
-},3000);
+let count=1
+let greeting = setInterval(()=>{
+  console.log(count)  
+  count++
+  if(count>5){
+clearInterval(greeting)
+}
+},1000)
 
-setInterval(()=>{
-    console.log("hello vicky-interval");
-    },3000);
+
 
