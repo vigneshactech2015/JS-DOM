@@ -1,6 +1,7 @@
 //promise is an object which will accept function as a parameter.
 //Inside the function we have two parameters-resolve and reject
 //promise has 3 states-pending(initial state),rejected,fullfilled
+//promise is an object that represents an eventual completion/failue of async operations
 
 //example 1
 let p=new Promise((resolve,reject)=>{
