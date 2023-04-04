@@ -7,26 +7,24 @@ Debouncing
 Throttling
  difference between two functioncall is 3000ms no matter what the event is.
 
+//IN REACT JS
 
-//HTML
-<input type="text" onkeyup="betterFunction()">
-  
- //JS
-  
-let counter=0;
-const getData=()=>{
-  //api call
- console.log("fetching data",counter++) 
-}
-
-const doSomeMagic=function(fn,delay){
+ function debounce(func){
  let timer;
-  return function(){
-    clearTimeout(timer);
-    timer=setTimeout(()=>{
-    fn.apply(this,arguments)
-    },delay)
-  }
+ return function(...args){
+  const context = this;
+  if(timer) clearTimeout(timer)
+  timer = setTimeout(()=>{
+    timer = null;
+    func.apply(context,args)
+  },1000)
+ }
 }
 
-let betterFunction=doSomeMagic(getData,3000)
+function handleSearch(e){
+ //api call
+}
+
+const searchFn = useCallback(debounce(handleSearch),[])
+
+<input type="search" onChange={(e)=>{searchFn(e)}}/>
