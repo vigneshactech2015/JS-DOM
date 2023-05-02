@@ -19,6 +19,6 @@ document.querySelector("#category").addEventListener('click',(e)=>{
 })
 
 //pros                               cons
-1.memory saving                     1.All Events are not bubbled up
+1.memory saving                     1.All Events are not bubbled up(Ex. Focus , blur)
 2.Less code complexity              2.Stop Propogation used means delegation will not work
 3.Less DOM Manipulation
