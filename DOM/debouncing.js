@@ -28,3 +28,21 @@ function handleSearch(e){
 const searchFn = useCallback(debounce(handleSearch),[])
 
 <input type="search" onChange={(e)=>{searchFn(e)}}/>
+
+
+
+//method 2
+
+useEffect(()=>{
+ 
+ const identifier = setTimeout(()=>{
+  console.log('Checking form validity')
+  setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length>6)
+ },500);
+ 
+ return ()=>{
+  console.log('cleanup')
+  clearTimeout(identifier)
+ }
+ 
+},[enteredEmail,enteredPassword])
