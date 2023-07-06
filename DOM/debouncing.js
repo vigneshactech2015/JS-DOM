@@ -9,25 +9,36 @@ Throttling
 
 //IN REACT JS
 
- function debounce(func){
- let timer;
- return function(...args){
-  const context = this;
-  if(timer) clearTimeout(timer)
-  timer = setTimeout(()=>{
-    timer = null;
-    func.apply(context,args)
-  },1000)
- }
+ 
+import { useState, useCallback } from "react";
+
+export default function App() {
+  const[search,setSearch] = useState("")
+  function debouncing(func) {
+    let timer;
+    return (...args) => {
+      const context = this;
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        timer = null;
+        func.apply(context, args);
+      }, 1000);
+    };
+  }
+
+  function searchHandler(e) {
+    console.log('api call');
+    setSearch(e.target.value)
+  }
+
+  const searchFn = useCallback(debouncing(searchHandler), []);
+  return (
+    <div className="App">
+      <input type="text" onChange={(e) => searchFn(e)} />
+      <p>{search}</p>
+    </div>
+  );
 }
-
-function handleSearch(e){
- //api call
-}
-
-const searchFn = useCallback(debounce(handleSearch),[])
-
-<input type="search" onChange={(e)=>{searchFn(e)}}/>
 
 
 
