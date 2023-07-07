@@ -1,0 +1,48 @@
+let obj = {
+  a: 100,
+  fun1() {
+    let a = 20;
+    let fun2 = () => {
+      console.log(this.a);
+    };
+    fun2();
+  },
+};
+
+obj.fun1();
+
+//output 100
+----------------  -----------------
+
+let obj = {
+  a: 100,
+  fun1() {
+    let a = 20;
+    let fun2 = function () {
+      console.log(a);
+    };
+    fun2();
+  },
+};
+
+obj.fun1();
+
+//output 20
+
+----------------  -----------------
+
+let obj = {
+  a: 100,
+  fun1() {
+    let a = 20;
+    let fun2 = function () {
+      console.log(this.a);
+    };
+    fun2();
+  },
+};
+
+obj.fun1();
+
+//output undefined
+
