@@ -8,7 +8,7 @@ async function getdata(){
     var res=await get.json();
     console.log(res);
     res.map((res1)=>{
-    document.getElementById('name').innerHTML=`<h5>${res1.email}</h5>
+    document.getElementById('name').innerHTML=`<h5>${res1.name}</h5>
     <h5>${res1.email}</h5>`
 })}
 
