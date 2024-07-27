@@ -4,6 +4,24 @@ third parameter is false
 Event capturing : grandparent -> parent -> child
 third parameter is true
 
+// In React JS
+
+export default function App() {
+  const clickHandler = (e, str) => {
+    console.log(`${str} clicked`);
+  };
+
+  return (
+    <div className="App" onClickCapture={(e) => clickHandler(e, "grandparent")}>
+      grandparent
+      <div onClickCapture={(e) => clickHandler(e, "parent")}>
+        parent
+        <div onClickCapture={(e) => clickHandler(e, "child")}>child</div>
+      </div>
+    </div>
+  );
+}
+
 //html
 
 <style>
@@ -32,4 +50,5 @@ document.querySelector("#parent").addEventListener('click',(e)=>{
   console.log("parent clicked")
   e.stopPropagation()
 },true)
+
 
