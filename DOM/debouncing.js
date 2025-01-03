@@ -17,14 +17,27 @@ export default function App() {
   function debouncing(func) {
     let timer;
     return (...args) => {
-      const context = this;
+     
       if (timer) clearTimeout(timer);
       timer = setTimeout(() => {
         timer = null;
-        func.apply(context, args);
+        func.apply(this, args);
       }, 1000);
     };
   }
+
+// without using call,apply,bind
+
+function debouncing(func) {
+  let timer;
+  return function (...args) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      timer = null;
+      func(...args); // Directly invoke the function with arguments
+    }, 1000);
+  };
+}
 
   function searchHandler(e) {
     console.log('api call');
