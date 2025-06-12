@@ -11,7 +11,7 @@ let obj = {
 
 obj.fun1();
 
-//output 100
+//output 100 (arrow function this keyword points to lexical environment)
 ----------------  -----------------
 
 let obj = {
@@ -44,5 +44,5 @@ let obj = {
 
 obj.fun1();
 
-//output undefined
+//output undefined (since a:100 is outside - in lexical scope)
 
