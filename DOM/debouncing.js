@@ -39,12 +39,13 @@ function debouncing(func) {
   };
 }
 
-  function searchHandler(e) {
-    console.log('api call');
-    setSearch(e.target.value)
-  }
+const searchHandler = useCallback((e) => {
+  console.log("api call");
+  setSearch(e.target.value);
+}, []);
 
-  const searchFn = useCallback(debouncing(searchHandler), []);
+const searchFn = useMemo(() => debouncing(searchHandler), [searchHandler]);
+
   return (
     <div className="App">
       <input type="text" onChange={(e) => searchFn(e)} />
